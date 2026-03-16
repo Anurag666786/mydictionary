@@ -325,7 +325,7 @@ function Navbar({ setWord }) {
           </div>
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
             <Link to="/">Home</Link>
-            <Link to="/Popular_Searches">Trending</Link>
+            <Link to="/PopularSearches">Trending</Link>
             <Link to="/About">About</Link>
             <a
               href="https://anurag-developers.vercel.app/"

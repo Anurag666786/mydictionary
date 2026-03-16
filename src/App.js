@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Popular_Searches from "./components/Popular_Searches";
+import PopularSearches from "./components/PopularSearches";
 import "./App.css";
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
         <Route path="/" element={<Home word={word} setWord={setWord} />} />
         <Route path="/about" element={<About />} />
         <Route
-          path="/Popular_Searches"
-          element={<Popular_Searches setWord={setWord} />}
+          path="/PopularSearches"
+          element={<PopularSearches setWord={setWord} />}
         />
       </Routes>
     </Router>

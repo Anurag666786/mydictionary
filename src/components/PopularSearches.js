@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Popular_Searches({ setWord }) {
+function PopularSearches({ setWord }) {
 
   const [trendingWords, setTrendingWords] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -191,5 +191,5 @@ function Popular_Searches({ setWord }) {
   );
 }
 
-export default Popular_Searches;
+export default PopularSearches;
 
