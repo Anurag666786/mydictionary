@@ -243,6 +243,68 @@ function Home({ word, setWord }) {
           margin-top:10px;
         }
 
+.empty-home-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:70vh;
+}
+
+.empty-home{
+  text-align:center;
+  color:white;
+  animation:fadeIn 0.8s ease;
+
+  /* NEW CONTAINER STYLE */
+  background:rgba(255, 255, 255, 0.71);
+  padding:80px;
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  max-width:600px;
+  width:100%;
+}
+
+        .empty-home{
+  text-align:center;
+  margin-top:100px;
+  color:rgba(0, 0, 0, 0.84);
+  animation:fadeIn 0.8s ease;
+}
+
+.empty-home h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.empty-home p{
+  font-size:18px;
+  opacity:0.9;
+  margin-bottom:25px;
+}
+
+.empty-suggestions span{
+  display:inline-block;
+  background:rgba(255,255,255,0.2);
+  padding:8px 14px;
+  margin:6px;
+  border-radius:20px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+  transition:all 0.3s ease;
+}
+
+.empty-suggestions span:hover{
+  background:white;
+  color:black;
+  transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
 @keyframes resultFade {
   from{
     opacity:0;
@@ -358,6 +420,42 @@ function Home({ word, setWord }) {
 
       <div className="home-container">
         {error && <p className="error">{error}</p>}
+
+        {/* NEW: Empty Home UI */}
+        {!word && !loading && (
+          <div className="empty-home-wrapper">
+            <div className="empty-home">
+              <h1>MyDictionary</h1>
+              <p>
+                Search any word to get meanings, pronunciation, synonyms,
+                antonyms, and related words instantly. If you want to search for trending words go to Trending tab in navbar.
+              </p>
+
+              <div className="empty-suggestions">
+                <span onClick={() => setWord("hello")}>hello</span>
+                <span onClick={() => setWord("world")}>world</span>
+                <span onClick={() => setWord("success")}>success</span>
+                <span onClick={() => setWord("technology")}>technology</span>
+                <span onClick={() => setWord("cat")}>cat</span>
+                <span onClick={() => setWord("ball")}>ball</span>
+                <span onClick={() => setWord("house")}>house</span>
+                <span onClick={() => setWord("disaster")}>disaster</span>
+                <span onClick={() => setWord("dog")}>dog</span>
+                <span onClick={() => setWord("country")}>country</span>
+                <span onClick={() => setWord("outskirts")}>outskirts</span>
+                <span onClick={() => setWord("temperature")}>temperature</span>
+                <span onClick={() => setWord("guts")}>guts</span>
+                <span onClick={() => setWord("household")}>household</span>
+                <span onClick={() => setWord("marriage")}>marriage</span>
+                <span onClick={() => setWord("hospital")}>hospital</span>
+                <span onClick={() => setWord("horse")}>horse</span>
+                <span onClick={() => setWord("cattle")}>cattle</span>
+
+
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="layout">
           {data && (
