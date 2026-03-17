@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import PopularSearches from "./components/PopularSearches";
+import WordOfDay from "./components/WordOfDay";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           path="/PopularSearches"
           element={<PopularSearches setWord={setWord} />}
         />
+        <Route path="/wordoftheday" element={<WordOfDay />} />
       </Routes>
     </Router>
   );

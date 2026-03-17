@@ -40,6 +40,7 @@ function PopularSearches({ setWord }) {
   return (
     <>
       <style>{`
+      
 
       body{
         margin:0;

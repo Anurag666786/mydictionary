@@ -325,6 +325,7 @@ function Navbar({ setWord }) {
           </div>
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
             <Link to="/">Home</Link>
+            <Link to="/wordoftheday">Word of Day</Link>
             <Link to="/PopularSearches">Trending</Link>
             <Link to="/About">About</Link>
             <a

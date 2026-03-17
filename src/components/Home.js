@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../logo.png";
 
+
 function Home({ word, setWord }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
@@ -109,6 +110,7 @@ function Home({ word, setWord }) {
   return (
     <>
       <style>{`
+      
 
         body{
           margin:0;
@@ -161,23 +163,23 @@ function Home({ word, setWord }) {
           overflow:hidden;
         }
 
-.related-word::after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:0;
-  background:rgba(255,255,255,0.6);
-  border-radius:50%;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  transition:width 0.4s,height 0.4s;
-}
+        .related-word::after{
+          content:"";
+          position:absolute;
+          width:0;
+          height:0;
+          background:rgba(255,255,255,0.6);
+          border-radius:50%;
+          top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          transition:width 0.4s,height 0.4s;
+        }
 
-.related-word:hover::after{
-  width:200%;
-  height:200%;
-}
+          .related-word:hover::after{
+            width:200%;
+            height:200%;
+          }
 
         .result-card{
             flex:1;
