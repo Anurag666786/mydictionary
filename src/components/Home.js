@@ -433,6 +433,45 @@ function Home({ word, setWord }) {
     opacity:0;
   }
 
+ .home-container{
+    padding:15px;
+  }
+
+  .empty-home{
+    padding:30px 20px;
+    margin-top:20px;
+    border-radius:14px;
+  }
+
+  .home-logo-img{
+    height:36px;
+  }
+
+  .home-logo h1{
+    font-size:28px;
+  }
+
+  .empty-home p{
+    font-size:15px;
+    line-height:1.5;
+    margin-bottom:20px;
+  }
+
+  .empty-suggestions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .empty-suggestions span{
+    padding:6px 12px;
+    font-size:13px;
+    margin:0;
+  }
+
+}
+
 }
 
       `}</style>
