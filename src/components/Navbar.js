@@ -250,13 +250,17 @@ function Navbar({ setWord }) {
       opacity: 1;
     }
 
-    .nav-links a{
-      padding:12px 16px;
+    .nav-links a{     
+      padding:0 16px;
+      height:46px;
+      display:flex;
+      align-items:center;
       border-bottom:1px solid rgba(255,255,255,0.08);
+      box-sizing:border-box;
     }
 
     .nav-links a:last-child{
-      border-bottom:none;
+      border-bottom:1px solid transparent;
     }
 
     .menu-toggle {

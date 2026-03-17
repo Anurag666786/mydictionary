@@ -491,7 +491,7 @@ function Home({ word, setWord }) {
               </div>
               <p>
                 Search any word to get meanings, pronunciation, synonyms,
-                antonyms, and related words instantly. If you want to search for trending words go to Trending tab in navbar.
+                antonyms, and related words instantly. If you want to search for trending words or word of the day go to Trending or Word of day tab in navbar.
               </p>
 
               <div className="empty-suggestions">

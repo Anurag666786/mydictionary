@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 
 function WordOfDay() {
   const [word, setWord] = useState("");
-  const [meaning, setMeaning] = useState("");
+  const [data, setData] = useState(null);
   const [audio, setAudio] = useState(null);
   const [example, setExample] = useState("");
   const [loading, setLoading] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     const fetchWordOfDay = async () => {
@@ -19,7 +20,7 @@ function WordOfDay() {
           selectedWord = stored.word;
         } else {
           const randomRes = await fetch(
-            "https://api.datamuse.com/words?sp=?????&max=20"
+            "https://api.datamuse.com/words?sp=?????&max=20",
           );
           const randomData = await randomRes.json();
 
@@ -28,31 +29,28 @@ function WordOfDay() {
 
           localStorage.setItem(
             "wordOfDay",
-            JSON.stringify({ word: selectedWord, date: today })
+            JSON.stringify({ word: selectedWord, date: today }),
           );
         }
 
         setWord(selectedWord);
 
         const dictRes = await fetch(
-          `https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`,
         );
         const dictData = await dictRes.json();
 
         if (dictData && dictData[0]) {
           const entry = dictData[0];
 
-          setMeaning(
-            entry.meanings[0].definitions[0].definition
-          );
+          setData(entry);
 
           const phoneticAudio = entry.phonetics?.find((p) => p.audio);
           if (phoneticAudio) {
             setAudio(phoneticAudio.audio);
           }
 
-          const exampleText =
-            entry.meanings[0].definitions[0].example;
+          const exampleText = entry.meanings[0].definitions[0].example;
           if (exampleText) {
             setExample(exampleText);
           }
@@ -72,6 +70,14 @@ function WordOfDay() {
       const sound = new Audio(audio);
       sound.play();
     }
+  };
+
+  const handleWordClick = () => {
+    setClicked(true);
+
+    setTimeout(() => {
+      setClicked(false);
+    }, 400); // duration of animation
   };
 
   return (
@@ -101,17 +107,19 @@ function WordOfDay() {
           padding:80px;
           border-radius:12px;
           backdrop-filter:blur(6px);
-          text-align:center;
-          max-width:600px;
+          text-align:left;
+          max-width:800px;
           width:100%;
           box-shadow:0 10px 25px rgba(0, 0, 0, 0.51);
 
           animation: cardEnter 0.8s cubic-bezier(.22,.61,.36,1);
+          overflow:hidden;
         }
 
         .wod-title{
           font-family:Arial;
           font-weight:600;
+          text-align:center;
           font-size:37px;
           font-weight:bold;
           margin-bottom:20px;
@@ -119,15 +127,24 @@ function WordOfDay() {
           animation: fadeUp 0.6s ease;
         }
 
-        .wod-word{
-          font-size:34px;
-          font-weight:bold;
-          color:rgba(0, 0, 0, 0.84);
-          margin-bottom:15px;
+       .wod-word{
+        position:relative;
+        display:inline-block;
+        padding:5px 18px;
+        border-radius:50px;
+        background:rgba(255,255,255,0.4);
+        backdrop-filter:blur(8px);
+        cursor:pointer;
 
-          animation: popIn 0.6s ease;
-        }
+        font-size:34px;
+        font-weight:bold;
+        text-align:center;
+        color:rgba(0, 0, 0, 0.84);
+        margin-bottom:15px;
 
+        animation: popIn 0.6s ease;
+        transition:all 0.3s ease;
+      }
         .wod-meaning{
           font-family: 'Poppins', sans-serif;
           font-size:18px;
@@ -153,6 +170,15 @@ function WordOfDay() {
           font-style:italic;
           color:#555;
           animation: fadeUp 1s ease;
+        }
+
+        .tag{
+          display:inline-block;
+          background:#e0e0e0;
+          padding:4px 8px;
+          border-radius:5px;
+          margin:3px;
+          font-size:13px;
         }
 
         /* 🔥 ANIMATIONS */
@@ -197,6 +223,127 @@ function WordOfDay() {
             transform:translateY(0);
           }
         }
+
+/* 🌟 BUBBLE STYLE */
+
+
+/* ✨ HOVER GLOW */
+.wod-word:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+/* 💥 CLICK ANIMATION */
+.wod-clicked{
+  animation: clickPop 0.4s ease;
+}
+
+/* 🔥 RIPPLE EFFECT */
+.wod-word::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:rgba(255, 255, 255, 0.49);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  opacity:0;
+}
+
+.wod-clicked::after{
+  animation: ripple 0.4s ease;
+}
+
+/* 🎬 KEYFRAMES */
+@keyframes clickPop{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.2); }
+  100%{ transform:scale(1); }
+}
+
+@keyframes ripple{
+  0%{
+    width:0;
+    height:0;
+    opacity:0.6;
+  }
+  100%{
+    width:200%;
+    height:200%;
+    opacity:0;
+  }
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width:768px){
+
+  .wod-container{
+    padding:20px 10px 0 10px;
+    align-items:flex-start;
+  }
+
+  .wod-card{
+    padding:25px 18px;
+    border-radius:14px;
+    max-width:100%;
+  }
+
+  .wod-title{
+    font-size:26px;
+    margin-bottom:15px;
+  }
+
+  .wod-word{
+    font-size:24px;
+    padding:6px 14px;
+    margin-bottom:12px;
+  }
+
+  .audio-btn{
+    font-size:18px;
+    margin-left:6px;
+  }
+
+  .wod-meaning{
+    font-size:15px;
+  }
+
+  .wod-meaning h4{
+    font-size:16px;
+    margin-top:10px;
+  }
+
+  .example{
+    font-size:14px;
+  }
+
+  .tag{
+    font-size:12px;
+    padding:3px 6px;
+    margin:2px;
+  }
+
+  /* 🔥 Fix long words breaking layout */
+  .wod-word, .wod-meaning p{
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+  }
+
+  /* 🔥 Better spacing for meanings */
+  .wod-meaning{
+    margin-bottom:10px;
+  }
+
+  .wod-word{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+}
+
       `}</style>
 
       <div className="wod-container">
@@ -207,7 +354,10 @@ function WordOfDay() {
             <p>Loading...</p>
           ) : (
             <>
-              <div className="wod-word">
+              <div
+                className={`wod-word ${clicked ? "wod-clicked" : ""}`}
+                onClick={handleWordClick}
+              >
                 {word}
                 {audio && (
                   <button className="audio-btn" onClick={playAudio}>
@@ -216,13 +366,46 @@ function WordOfDay() {
                 )}
               </div>
 
-              <div className="wod-meaning">{meaning}</div>
+              {data &&
+                data.meanings.map((meaning, index) => (
+                  <div key={index} className="wod-meaning">
+                    <h4>{meaning.partOfSpeech}</h4>
 
-              {example && (
-                <div className="example">
-                  Example: {example}
-                </div>
-              )}
+                    {meaning.definitions.slice(0, 2).map((def, i) => (
+                      <div key={i}>
+                        <p>• {def.definition}</p>
+
+                        {def.example && (
+                          <div className="example">Example: {def.example}</div>
+                        )}
+
+                        {def.synonyms && def.synonyms.length > 0 && (
+                          <div>
+                            ⭐ Synonyms:
+                            {def.synonyms.slice(0, 5).map((syn, j) => (
+                              <span key={j} className="tag">
+                                {syn}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {def.antonyms && def.antonyms.length > 0 && (
+                          <div>
+                            ⚡ Antonyms:
+                            {def.antonyms.slice(0, 5).map((ant, j) => (
+                              <span key={j} className="tag">
+                                {ant}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+
+              {example && <div className="example">Example: {example}</div>}
             </>
           )}
         </div>

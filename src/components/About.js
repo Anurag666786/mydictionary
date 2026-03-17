@@ -211,6 +211,7 @@ function About() {
             <li> Synonmyms and antonyms for the words</li>
             <li> Nouns, verbs, adjectives and adverbs of the words</li>
             <li> Top trending words and searches</li>
+            <li> Word of the day</li>
             <li> Built for both phones and desktops</li>
             <li> Simple and distraction-free design</li>
           </ul>
