@@ -99,7 +99,7 @@ function Navbar({ setWord }) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 60px;
     flex-wrap: wrap;
   }
 
@@ -186,7 +186,7 @@ function Navbar({ setWord }) {
 
   .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 60px;
   }
 
   .nav-links a {
@@ -213,60 +213,59 @@ function Navbar({ setWord }) {
       width:auto;
     }
 
-  @media (max-width: 768px) {
+ @media (max-width: 768px) {
 
-    .navbar-container{
-      flex-direction: row;
-      gap: 1px;
-    }
+  .navbar{
+    padding:10px 12px;
+  }
 
-    .search-bar{
-      order: 3;
-      width: 100%;
-      margin-top: 10px;
-    }
+  .navbar-container{
+    flex-wrap:wrap;
+    gap:10px;
+  }
 
-    .search-bar form{
-      max-width: 100%;
-    }
+  .menu-toggle{
+    display:block;
+    margin-left:auto;
+  }
 
-    /* Animated mobile menu */
+  .nav-links{
+    order:2;
+    display:flex;
+    gap: 0;
+    flex-direction:column;
+    width:100%;
+    background:#3a3939;
+    border-radius:8px;
+    overflow:hidden;
 
-    .nav-links {
-      flex-direction: column;
-      background: #3a3939;
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
-      overflow: hidden;
+    max-height:0;
+    opacity:0;
+    transition:all 0.35s ease;
+  }
 
-      max-height: 0;
-      opacity: 0;
-      transition: all 0.35s ease;
-    }
+  .nav-links.active{
+    max-height:1000px;
+    opacity:1;
+  }
 
-    .nav-links.active {
-      max-height: 300px;
-      opacity: 1;
-    }
+  .nav-links a{
+    padding:12px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
 
-    .nav-links a{     
-      padding:0 16px;
-      height:46px;
-      display:flex;
-      align-items:center;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      box-sizing:border-box;
-    }
+  .search-bar{
+    order:3;
+    width:100%;
+    margin-top:10px;
+    justify-content:center;
+  }
 
-    .nav-links a:last-child{
-      border-bottom:1px solid transparent;
-    }
+  .search-bar form{
+    max-width:100%;
+  }
 
-    .menu-toggle {
-      display: block;
-    }
-  
+}
    
     
    
