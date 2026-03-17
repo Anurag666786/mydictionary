@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "../logo.png";
 
 function Home({ word, setWord }) {
   const [data, setData] = useState(null);
@@ -256,7 +257,7 @@ function Home({ word, setWord }) {
   animation:fadeIn 0.8s ease;
 
   /* NEW CONTAINER STYLE */
-  background:rgba(255, 255, 255, 0.71);
+  background:rgba(255, 255, 255, 0.53);
   padding:80px;
   border-radius:16px;
   backdrop-filter:blur(10px);
@@ -267,7 +268,7 @@ function Home({ word, setWord }) {
 
         .empty-home{
   text-align:center;
-  margin-top:100px;
+  margin-top:40px;
   color:rgba(0, 0, 0, 0.84);
   animation:fadeIn 0.8s ease;
 }
@@ -298,6 +299,24 @@ function Home({ word, setWord }) {
   background:white;
   color:black;
   transform:scale(1.05);
+}
+
+.home-logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.home-logo-img{
+  height:50px;
+  width:auto;
+}
+
+.home-logo h1{
+  margin:0;
+  font-size:42px;
 }
 
 @keyframes fadeIn{
@@ -425,7 +444,10 @@ function Home({ word, setWord }) {
         {!word && !loading && (
           <div className="empty-home-wrapper">
             <div className="empty-home">
+              <div className="home-logo">
+              <img src={logo} alt="logo" className="home-logo-img" />
               <h1>MyDictionary</h1>
+              </div>
               <p>
                 Search any word to get meanings, pronunciation, synonyms,
                 antonyms, and related words instantly. If you want to search for trending words go to Trending tab in navbar.
