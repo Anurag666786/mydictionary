@@ -250,7 +250,6 @@ function Home({ word, setWord }) {
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:70vh;
 }
 
 .empty-home{
@@ -269,11 +268,11 @@ function Home({ word, setWord }) {
 }
 
         .empty-home{
-  text-align:center;
-  margin-top:40px;
-  color:rgba(0, 0, 0, 0.84);
-  animation:fadeIn 0.8s ease;
-}
+          text-align:center;
+          margin-top:2px;
+          color:rgba(0, 0, 0, 0.84);
+          animation:fadeIn 0.8s ease;
+        }
 
 .empty-home h1{
   font-size:42px;
@@ -495,8 +494,8 @@ function Home({ word, setWord }) {
               </p>
 
               <div className="empty-suggestions">
-                <span onClick={() => setWord("hello")}>hello</span>
-                <span onClick={() => setWord("world")}>world</span>
+                <span onClick={() => setWord("dictionary")}>dictionary</span>
+                <span onClick={() => setWord("world")}>useful</span>
                 <span onClick={() => setWord("success")}>success</span>
                 <span onClick={() => setWord("technology")}>technology</span>
                 <span onClick={() => setWord("cat")}>cat</span>
@@ -513,6 +512,32 @@ function Home({ word, setWord }) {
                 <span onClick={() => setWord("hospital")}>hospital</span>
                 <span onClick={() => setWord("horse")}>horse</span>
                 <span onClick={() => setWord("cattle")}>cattle</span>
+                <span onClick={() => setWord("carrot")}>carrot</span>
+                <span onClick={() => setWord("zebra")}>zebra</span>
+                <span onClick={() => setWord("bike")}>bike</span>
+                <span onClick={() => setWord("home")}>home</span>
+                <span onClick={() => setWord("asteroid")}>asteroid</span>
+                <span onClick={() => setWord("monkey")}>monkey</span>
+                <span onClick={() => setWord("black")}>black</span>
+                <span onClick={() => setWord("debris")}>debris</span>
+                <span onClick={() => setWord("honey")}>honey</span>
+                <span onClick={() => setWord("actor")}>actor</span>
+                <span onClick={() => setWord("cinema")}>cinema</span>
+                <span onClick={() => setWord("horrific")}>horrific</span>
+                <span onClick={() => setWord("cattle")}>cattle</span>
+                <span onClick={() => setWord("gym")}>gym</span>
+                <span onClick={() => setWord("code")}>code</span>
+                <span onClick={() => setWord("pet")}>pet</span>
+                <span onClick={() => setWord("direction")}>direction</span>
+                <span onClick={() => setWord("world")}>world</span>
+                <span onClick={() => setWord("film")}>film</span>
+                <span onClick={() => setWord("headshot")}>headshot</span>
+                <span onClick={() => setWord("station")}>station</span>
+                <span onClick={() => setWord("horn")}>horn</span>
+                <span onClick={() => setWord("truck")}>truck</span>
+                <span onClick={() => setWord("missile")}>missile</span>
+                <span onClick={() => setWord("jet")}>jet</span>
+                <span onClick={() => setWord("president")}>president</span>
 
 
               </div>
